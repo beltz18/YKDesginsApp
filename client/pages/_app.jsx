@@ -1,4 +1,6 @@
-import Head from "next/head"
+import React from 'react'
+import Head  from "next/head"
+import '../styles/globals.min.css'
 
 function App({ Component, pageProps }) {
   return (
