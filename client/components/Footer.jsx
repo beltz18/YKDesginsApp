@@ -1,9 +1,18 @@
-import React from 'react'
+import React from 'react';
+import { AiFillInstagram, AiOutlineTwitter} from 'react-icons/ai';
 
 const Footer = () => {
+  const year = new Date().getFullYear()
+
   return (
-    <div>
-      Footer
+    <div className="footer-container">
+      <br />
+      .
+      <p>{ year } J&K Diseños todos los derechos reservados</p>
+      <p className="icons">
+        <AiFillInstagram />
+        <AiOutlineTwitter />
+      </p>
     </div>
   )
 }

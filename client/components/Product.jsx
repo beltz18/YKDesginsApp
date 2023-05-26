@@ -1,9 +1,22 @@
 import React from 'react'
+import Link  from 'next/link'
+import Image from 'next/image'
 
-const Product = () => {
+const Product = ({ product: { id, image, name, price, details } }) => {
   return (
     <div>
-      Product
+      <Link href={`/product/${ id }`}>
+        <Image
+          src={`/assets/${ image[0] }`}
+          width='250'
+          height='250'
+          alt='product'
+          className='product-image'
+        />
+        <p className="product-name">{ name }</p>
+        <p className="product-price">${ price }</p>
+        <p className="product-details">{ details }</p>
+      </Link>
     </div>
   )
 }

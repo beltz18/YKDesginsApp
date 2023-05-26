@@ -1,7 +1,9 @@
 from flask               import *
+from flask_cors          import CORS
 from controllers.manage  import *
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/')
 def index():
@@ -18,6 +20,12 @@ def product(action, Type, Id):
     elif Type == 'banner':
       cat = {}
       ban = Banner(action, Id, cat)
+      a = ban.do_task()
+      return a
+    elif Type == 'discount':
+      print("hello")
+      dis = {}
+      ban = Discount(action, Id, dis)
       a = ban.do_task()
       return a
     else:
