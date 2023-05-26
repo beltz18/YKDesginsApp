@@ -77,12 +77,12 @@ data = {
       'discount': 20,
       'largeText1': 'MORE',
       'largeText2': 'TEXT',
-      'saleTime': '',
+      'saleTime': '15 May to 15 Sep',
       'smallText': 'small',
-      'midText': 'Mid',
+      'midText': 'Summer Sale',
       'description': 'Lorem Ipsum',
       'buttonText': 'Shop Now',
-      'image': ['watch_1.webp', 'watch_2.webp', 'watch_3.webp', 'watch_4.webp']
+      'image': 'watch_1.webp'
     }
   ]
 }

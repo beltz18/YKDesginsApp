@@ -23,7 +23,6 @@ def product(action, Type, Id):
       a = ban.do_task()
       return a
     elif Type == 'discount':
-      print("hello")
       dis = {}
       ban = Discount(action, Id, dis)
       a = ban.do_task()

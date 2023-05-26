@@ -1,6 +1,5 @@
 import React from 'react'
 import Link  from 'next/link'
-import Image from 'next/image'
 
 const FooterBanner = ({ footerBanner: { discount, largeText1, largeText2, saleTime, smallText, midText, description, product, buttonText, image } }) => {
   return (
@@ -12,6 +11,7 @@ const FooterBanner = ({ footerBanner: { discount, largeText1, largeText2, saleTi
           <h3>{ largeText2 }</h3>
           <p>{ saleTime }</p>
         </div>
+
         <div className="right">
           <p>{ smallText }</p>
           <h3>{ midText }</h3>
@@ -21,10 +21,8 @@ const FooterBanner = ({ footerBanner: { discount, largeText1, largeText2, saleTi
           </Link>
         </div>
 
-        <Image 
-          src={`/assets/${ image[0] }`}
-          width='300'
-          height='300'
+        <img 
+          src={`/assets/${ image }`}
           alt='Product in discount'
           className="footer-banner-image"
         />

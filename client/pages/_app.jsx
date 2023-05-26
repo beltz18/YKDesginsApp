@@ -1,15 +1,16 @@
 import React from 'react'
-import Head  from "next/head"
+import { Toaster } from 'react-hot-toast'
+
+import { Layout } from '../components'
 import '../styles/globals.min.css'
 
-function App({ Component, pageProps }) {
+function MyApp({ Component, pageProps }) {
   return (
-    <>
-      <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </Head>
+    <Layout>
+      <Toaster />
       <Component {...pageProps} />
-    </>
-  );
+    </Layout>
+  )
 }
-export default App
+
+export default MyApp

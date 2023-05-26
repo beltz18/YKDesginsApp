@@ -11,8 +11,6 @@ const Home = () => {
   const [product, setProduct]     = useState([])
   const [banner, setBanner]       = useState([])
   const [discounts, setDiscounts] = useState([])
-
-  console.log(product)
   
   useEffect(() => {
     axios.get('http://localhost:5000/product/get/product/0')
@@ -21,7 +19,7 @@ const Home = () => {
       .then(res => setBanner(res.data))
     axios.get('http://localhost:5000/product/get/discount/0')
       .then(res => setDiscounts(res.data))
-  })
+  }, [])
   
   return (
     <>
@@ -37,8 +35,6 @@ const Home = () => {
       </div>
 
       <FooterBanner footerBanner={ discounts.length && discounts[0] } />
-
-      <Footer />
     </>
   )
 }

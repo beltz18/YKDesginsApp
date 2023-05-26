@@ -8,6 +8,8 @@ const Footer = () => {
     <div className="footer-container">
       <br />
       .
+      <br />
+      <br />
       <p>{ year } J&K Diseños todos los derechos reservados</p>
       <p className="icons">
         <AiFillInstagram />

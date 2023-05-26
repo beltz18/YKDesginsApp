@@ -1,6 +1,5 @@
 import React from 'react'
 import Link  from 'next/link'
-import Image from 'next/image'
 
 const Banner = ({ banner: { id, smallText, midText, largeText, image, buttonText, description } }) => {
   return (
@@ -9,7 +8,11 @@ const Banner = ({ banner: { id, smallText, midText, largeText, image, buttonText
         <p className='beats-solo'>{ smallText }</p>
         <h3>{ midText }</h3>
         <h1>{ largeText }</h1>
-        <Image src={`/assets/${ image }`} width='300' height='300' alt='banner' className='hero-banner-image' />
+        <img
+          src={`/assets/${ image }`}
+          alt='banner'
+          className='hero-banner-image'
+        />
 
         <div>
           <Link href={`/product/${ id }`}>
