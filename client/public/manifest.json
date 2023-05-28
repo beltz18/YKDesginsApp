@@ -4,8 +4,8 @@
   "display": "standalone",
   "scope": "/",
   "start_url": "/",
-  "name": "Next-PWA",
-  "short_name": "Next-PWA",
+  "name": "Y&K Diseños",
+  "short_name": "Y&K Diseños",
   "description": "A Demo for Next-PWA",
   "icons": [
     {

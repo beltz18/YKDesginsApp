@@ -1,4 +1,4 @@
-import React , { useEffect, useState } from 'react'
+import React  from 'react'
 import {
   Footer,
   Banner,
@@ -7,26 +7,13 @@ import {
 } from '../components'
 import axios from 'axios'
 
-const Home = () => {
-  const [product, setProduct]     = useState([])
-  const [banner, setBanner]       = useState([])
-  const [discounts, setDiscounts] = useState([])
-  
-  useEffect(() => {
-    axios.get('http://localhost:5000/product/get/product/0')
-      .then(res => setProduct(res.data))
-    axios.get('http://localhost:5000/product/get/banner/0')
-      .then(res => setBanner(res.data))
-    axios.get('http://localhost:5000/product/get/discount/0')
-      .then(res => setDiscounts(res.data))
-  }, [])
-  
+const Home = ({ product, banner, discounts }) => {
   return (
     <>
       <Banner banner={ banner.length && banner[0] } />
 
       <div className="products-heading">
-        <h2>Y&K Diseños</h2>
+        <h2>Productos en tendencia</h2>
         <p>Encuentra tu propio estilo</p>
       </div>
 
@@ -37,6 +24,20 @@ const Home = () => {
       <FooterBanner footerBanner={ discounts.length && discounts[0] } />
     </>
   )
+}
+
+export async function getServerSideProps () {
+  const product   = await axios.get('http://127.0.0.1:5000/product/get/product/0')
+  const banner    = await axios.get('http://127.0.0.1:5000/product/get/banner/0')
+  const discounts = await axios.get('http://127.0.0.1:5000/product/get/discount/0')
+
+  return {
+    props: {
+      product: product.data,
+      banner: banner.data,
+      discounts: discounts.data
+    }
+  }
 }
 
 export default Home

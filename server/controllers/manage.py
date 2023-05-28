@@ -8,12 +8,13 @@ class Product:
   """
   def __init__(self, action, Id, prd):
     self.action = action
-    self.Id     = Id
+    self.Id     = int(Id)
     self.data   = prd
   
   def do_task(self):
     if self.action == 'get':
-      return data['products']
+      if self.Id > 0 : return data['products'][self.Id-1]
+      else: return data['products']
     
     elif self.action == 'add' and self.data:
       data['products'].append(self.data)
