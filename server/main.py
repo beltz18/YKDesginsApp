@@ -1,9 +1,15 @@
-from flask               import *
-from flask_cors          import CORS
-from controllers.manage  import *
+# Modules
+from flask                import *
+from flask_cors           import CORS
+# Class controllers
+from controllers.product  import Product
+from controllers.banner   import Banner
+from controllers.discount import Discount
 
 app = Flask(__name__)
 CORS(app)
+
+# --- --- --- --- --- Routes --- --- --- --- --- #
 
 @app.route('/')
 def index():
