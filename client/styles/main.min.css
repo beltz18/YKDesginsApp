@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, .body { min-height: 100vh; }
+
+h1 {
+  font-size: 40px;
+  font-weight: 800;
+}
+
+@media screen and (max-width: 876px) {
+  .content {
+    width: 94%;
+    margin: 3%;
+  }
+}

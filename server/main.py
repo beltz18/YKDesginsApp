@@ -5,7 +5,8 @@ from flask_cors           import CORS
 from controllers.product  import Product
 from controllers.banner   import Banner
 from controllers.discount import Discount
-from controllers.user     import User
+# Blueprints
+from routes.userRouter import userRouter
 
 app = Flask(__name__)
 CORS(app)
@@ -15,21 +16,6 @@ CORS(app)
 @app.route('/')
 def index():
   return {'message': 'hello world'}
-
-@app.route('/user/<action>', methods=['POST'])
-def userManager(action):
-  if action and action in ['create', 'get', 'delete', 'update']:
-    data = request.get_json()
-    user = User(action, data['email'], data)
-    res  = user.do_task()
-    return res
-  
-  else:
-    return {
-      'message': 'this action could not be performed',
-      'status': False
-    }
-  
 
 @app.route('/product/<action>/<Type>/<Id>', methods=['GET', 'POST'])
 def product(action, Type, Id):
@@ -63,3 +49,8 @@ def product(action, Type, Id):
       'message': 'Debes envíar tres parametros: la acción, el tipo de elemento y el Id del elemento',
       'status': False
     }
+  
+app.register_blueprint(userRouter)
+  
+if __name__ == '__main__':
+  app.run()

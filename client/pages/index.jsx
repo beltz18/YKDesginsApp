@@ -1,11 +1,11 @@
 import React  from 'react'
 import {
-  Footer,
   Banner,
   Product,
   FooterBanner
 } from '../components'
-import axios from 'axios'
+import axios         from 'axios'
+import { getCookie } from '@c/cookies'
 
 const Home = ({ product, banner, discounts }) => {
   return (
@@ -26,10 +26,21 @@ const Home = ({ product, banner, discounts }) => {
   )
 }
 
-export async function getServerSideProps () {
+export async function getServerSideProps ({ req }) {
   const product   = await axios.get('http://127.0.0.1:5000/product/get/product/0')
   const banner    = await axios.get('http://127.0.0.1:5000/product/get/banner/0')
   const discounts = await axios.get('http://127.0.0.1:5000/product/get/discount/0')
+
+  const token = getCookie('token', req)
+
+  if (typeof token == 'undefined') {
+    return {
+      redirect: {
+        destination: '/login',
+        permanent: false
+      }
+    }
+  }
 
   return {
     props: {

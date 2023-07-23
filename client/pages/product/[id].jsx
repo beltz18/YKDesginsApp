@@ -5,8 +5,9 @@ import {
   AiFillStar,
   AiOutlineStar
 } from 'react-icons/ai'
-import { Product } from '../../components'
-import axios       from 'axios'
+import { Product }   from '../../components'
+import axios         from 'axios'
+import { getCookie } from '@r/components/cookies'
 
 const PoductDetails = ({ product: { image, name, price, details }, products }) => {
   const [index, setIndex] = useState(0)
@@ -79,9 +80,20 @@ const PoductDetails = ({ product: { image, name, price, details }, products }) =
   )
 }
 
-export async function getServerSideProps ({ params: { id } }) {
+export async function getServerSideProps ({ params: { id }, req }) {
   const product  = await axios.get(`http://127.0.0.1:5000/product/get/product/${id}`)
   const products = await axios.get('http://127.0.0.1:5000/product/get/product/0')
+
+  const token = getCookie('token', req)
+
+  if (typeof token == 'undefined') {
+    return {
+      redirect: {
+        destination: '/login',
+        permanent: false
+      }
+    }
+  }
 
   return {
     props: {
