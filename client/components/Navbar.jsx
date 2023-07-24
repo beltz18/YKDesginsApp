@@ -4,7 +4,7 @@ import { AiOutlineShopping } from 'react-icons/ai'
 import { AiOutlinePoweroff } from 'react-icons/ai'
 import { removeCookie }      from './cookies'
 
-const Navbar = ({ name }) => {
+const Navbar = ({ name, access }) => {
   const logout = () => {
     removeCookie('access')
     removeCookie('token')
@@ -20,12 +20,18 @@ const Navbar = ({ name }) => {
       </p>
 
       <div>
-        <h5>{ name }</h5>
+        <h5 className='user-name'>{ name }</h5>
         
-        <button type='button' className='cart-icon' title='Carrito'>
-          <AiOutlineShopping />
-          <span className='cart-item-qty'>1</span>
-        </button>
+        {
+          access != 'admin'
+            ?
+          <button type='button' className='cart-icon' title='Carrito'>
+            <AiOutlineShopping />
+            <span className='cart-item-qty'>1</span>
+          </button>
+            :
+          <Link href="/admin" className='user-name'>Admin panel</Link>
+        }
 
         <button type='button' className='cart-icon' title='Cerrar sesión' onClick={ logout }>
           <AiOutlinePoweroff />

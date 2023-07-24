@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Navbar from './Navbar'
 import Footer from './Footer'
 
-const Layout = ({ children, token, name }) => {
+const Layout = ({ children, token, name, access }) => {
   if (typeof token != 'undefined') {
     return (
       <div className="layout">
@@ -11,7 +11,7 @@ const Layout = ({ children, token, name }) => {
           <title>Y&K Diseños</title>
         </Head>
         <header>
-          <Navbar name={ name } />
+          <Navbar name={ name } access={ access } />
         </header>
         <main className="main-container">
           { children }
