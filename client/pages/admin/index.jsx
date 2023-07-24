@@ -8,41 +8,42 @@ const ProductForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const product = {
-      name:        e.target[0].value,
-      price:       e.target[1].value,
-      quantity:    e.target[2].value,
-      description: e.target[3].value,
-      category:    e.target[4].value,
-    }
+    notifyError('Error')
+    // const product = {
+    //   name:        e.target[0].value,
+    //   price:       e.target[1].value,
+    //   quantity:    e.target[2].value,
+    //   description: e.target[3].value,
+    //   category:    e.target[4].value,
+    // }
 
-    const form = e.currentTarget
-    const file = Array.from(form.elements).find(({ type }) => type === 'file')
+    // const form = e.currentTarget
+    // const file = Array.from(form.elements).find(({ type }) => type === 'file')
     
-    const formData = new FormData()
-    for (const dataFile of file.files) { formData.append('file', dataFile) }
-    formData.append('upload_preset', 'crazyShop_uploads')
+    // const formData = new FormData()
+    // for (const dataFile of file.files) { formData.append('file', dataFile) }
+    // formData.append('upload_preset', 'crazyShop_uploads')
 
-    const data = await fetch(`${process.env.NEXT_PUBLIC_CLOUDINARY}`, {
-      method: 'POST',
-      body: formData
-    }).then(res => res.json())
+    // const data = await fetch(`${process.env.NEXT_PUBLIC_CLOUDINARY}`, {
+    //   method: 'POST',
+    //   body: formData
+    // }).then(res => res.json())
     
-    product['img'] = data.secure_url
-    const body = { product }
+    // product['img'] = data.secure_url
+    // const body = { product }
 
-    const newPrd = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}${process.env.NEXT_PUBLIC_PRODUCT_REG}`, {
-      method: 'POST',
-      mode: 'cors',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(body)
-    }).then(res => res.json())
+    // const newPrd = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}${process.env.NEXT_PUBLIC_PRODUCT_REG}`, {
+    //   method: 'POST',
+    //   mode: 'cors',
+    //   headers: { 'Content-Type': 'application/json' },
+    //   body: JSON.stringify(body)
+    // }).then(res => res.json())
     
-    if (newPrd.status == 201) { 
-      notifySuccess(newPrd.message)
-      e.target.reset()
-    } 
-    else notifyError(newPrd.message) 
+    // if (newPrd.status == 201) { 
+    //   notifySuccess(newPrd.message)
+    //   e.target.reset()
+    // } 
+    // else notifyError(newPrd.message)
   }
 
   return (
