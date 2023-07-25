@@ -23,7 +23,7 @@ def index():
     'name': 'Administrador',
     'email': 'admin@admin.com',
     'password': 'admin',
-    'acces': 'admin'
+    'access': 'admin'
   }
   user = User(data['email'], data)
   res  = user.create_user()

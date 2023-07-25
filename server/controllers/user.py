@@ -39,6 +39,7 @@ class User:
     del user['data']['password']
 
     if check:
+      print(user)
       return {
         'message': 'Usuario autenticado',
         'status': check,
