@@ -17,7 +17,7 @@ const PoductDetails = ({ product: { image, name, price, details }, products }) =
       <div className='product-detail-container'>
         <div>
           <div className='image-container'>
-            <img src={`/assets/${ image && image[index] }`} className='product-detail-image' alt="Product image" />
+            <img src={`${ image && image[index] }`} className='product-detail-image' alt="Product image" />
           </div>
           <div className="small-images-container">
             {
