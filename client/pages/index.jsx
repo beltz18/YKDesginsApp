@@ -28,6 +28,7 @@ const Home = ({ product, banner, discounts }) => {
 
 export async function getServerSideProps ({ req }) {
   const product   = await axios.get('http://127.0.0.1:5000/product/get/product/0')
+  const productD  = await axios.get('http://127.0.0.1:5000/product/data')
   const banner    = await axios.get('http://127.0.0.1:5000/product/get/banner/0')
   const discounts = await axios.get('http://127.0.0.1:5000/product/get/discount/0')
 
@@ -42,9 +43,11 @@ export async function getServerSideProps ({ req }) {
     }
   }
 
+  console.log(product.data, productD.data.data)
+
   return {
     props: {
-      product: product.data,
+      product: [...product.data, ...productD.data.data],
       banner: banner.data,
       discounts: discounts.data
     }
