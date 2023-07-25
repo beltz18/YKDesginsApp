@@ -6,6 +6,7 @@ import { getCookie }       from '@c/cookies'
 
 const ProductForm = () => {
   const [file, setFile] = useState(null)
+  const regexEmail      = /^((?!\.)[\w-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/
   const notifySuccess   = (msg) => toast.success(msg)
   const notifyError     = (msg) => toast.error(msg)
 
@@ -39,6 +40,34 @@ const ProductForm = () => {
 
     if (newProd.status) notifySuccess(newProd.message)
     else notifyError(newProd.message)
+  }
+
+  const handleNewAdmin = async (e) => {
+    e.preventDefault()
+
+    const user = {
+      name:     e.target[0].value,
+      email:    e.target[1].value,
+      password: 'admin',
+      access:   "admin"
+    }
+
+    if(!user.email.match(regexEmail)) notifyError(`
+      El correo no puede empezar por un punto, ni contener espacios
+      o caracteres especiales como '<>:*'
+    `)
+
+    else {
+      const post = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}${process.env.NEXT_PUBLIC_USER_REG}`, {
+        method: 'POST',
+        mode: 'cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(user),
+      })
+      const res  = await post.json()
+      if (!res.status) notifyError(res.message)
+      else notifySuccess(res.message)
+    }
   }
 
   return (
@@ -107,7 +136,7 @@ const ProductForm = () => {
               <h1 className="text-2xlg font-semibold text-center">Nuevo usuario</h1>
             </div>
             <div className="divide-y divide-gray-200 my-10">
-              <form id='form' onSubmit={ handleSubmit }>
+              <form id='form' onSubmit={ handleNewAdmin }>
                 <div className="mb-6">
                   <input type="text" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="Nombre completo" required />
                 </div>

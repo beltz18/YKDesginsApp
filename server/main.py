@@ -5,6 +5,7 @@ from flask_cors           import CORS
 from controllers.product  import Product
 from controllers.banner   import Banner
 from controllers.discount import Discount
+from controllers.user     import User
 # Blueprints
 from routes.userRouter    import userRouter
 from util.var             import *
@@ -18,7 +19,16 @@ CORS(app)
 
 @app.route('/')
 def index():
-  return {'message': 'hello world'}
+  data = {
+    'name': 'Administrador',
+    'email': 'admin@admin.com',
+    'password': 'admin',
+    'acces': 'admin'
+  }
+  user = User(data['email'], data)
+  res  = user.create_user()
+  print(res)
+  return res
 
 @app.route('/product/register', methods=['POST'])
 def register_product():

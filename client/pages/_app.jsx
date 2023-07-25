@@ -19,6 +19,8 @@ function MyApp({ Component, pageProps }) {
     setAccess(accessCookie)
   }, 1)
 
+  fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}`)
+
   return (
     <Layout token={ token } name={ name } access={ access }>
       <Toaster position='top-right' toastOptions={{ duration: 5000 }} />
