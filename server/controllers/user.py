@@ -29,6 +29,10 @@ class User:
     
   def login(self):
     user   = self.get_user()
+
+    if (user['status'] == False):
+      return user
+
     passw  = self.data['password'].encode('utf-8')
     hashed = user['data']['password']
     check  = bcrypt.checkpw(passw, hashed)
@@ -46,7 +50,7 @@ class User:
     else:
       return {
         'message': 'Contraseña incorrecta.',
-        'status': not check
+        'status': False
       }
 
   def create_user(self):

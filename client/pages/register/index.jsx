@@ -25,7 +25,7 @@ const RegisterPage = () => {
 
     else if(!user.password.match(regexPass)) notifyError(`
       La clave debe tener una longitud de 8 - 16 caracteres,
-      sin espacios y contener: 1 espacio, 1 letra mayúscula,
+      sin espacios y contener: al menos 1 letra mayúscula,
       1 letra minúscula y 1 caracter especial
     `)
 
