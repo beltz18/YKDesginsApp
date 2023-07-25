@@ -1,10 +1,27 @@
-import React                 from 'react'
-import Link                  from 'next/link'
-import { AiOutlineShopping } from 'react-icons/ai'
-import { AiOutlinePoweroff } from 'react-icons/ai'
-import { removeCookie }      from './cookies'
+import React, { useState, useEffect } from 'react'
+import Link                           from 'next/link'
+import { AiOutlineShopping }          from 'react-icons/ai'
+import { AiOutlinePoweroff }          from 'react-icons/ai'
+import { removeCookie }               from './cookies'
 
-const Navbar = ({ name, access }) => {
+const Navbar = ({ name, access, email }) => {
+  // const [qty, setQty]   = useState(0)
+  // const [cart, setCart] = useState([])
+
+  // const fetcher = async () => {
+  //   await fetch('http://127.0.0.1:5000/cart/get', {
+  //     method: 'POST',
+  //     mode: 'cors',
+  //     headers: { 'Content-Type': 'application/json' },
+  //     body: JSON.stringify({ email })
+  //   }).then(res => res.json())
+  //   console.log(res)
+  // }
+
+  // useEffect(() => {
+  //   fetcher()
+  // }, [])
+
   const logout = () => {
     removeCookie('access')
     removeCookie('token')

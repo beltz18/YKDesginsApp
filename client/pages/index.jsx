@@ -43,8 +43,6 @@ export async function getServerSideProps ({ req }) {
     }
   }
 
-  console.log(product.data, productD.data.data)
-
   return {
     props: {
       product: [...product.data, ...productD.data.data],

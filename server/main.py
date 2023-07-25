@@ -54,6 +54,33 @@ def get_products():
     'message': 'products fetched',
     'data': data
   }
+
+@app.route('/cart/add', methods=['POST'])
+def add_to_cart():
+  data = request.get_json()
+  cart = conn.YKdb['cart']
+  cart.insert_one(data)
+  return {
+    'message': 'Producto agregado a tu carrito',
+    'status': True
+  }
+
+@app.route('/cart/get', methods=['POST'])
+def get_cart_products():
+  email = request.json['email']
+  cart  = conn.YKdb['cart']
+  data  = []
+  cart.find({ 'email': email })
+
+  for c in cart:
+    del c['_id']
+    data.append(c)
+  print(email, data)
+  
+  return {
+    'message': 'cart fetched',
+    'data': data
+  }
   
 
 @app.route('/product/<action>/<Type>/<Id>', methods=['GET', 'POST'])

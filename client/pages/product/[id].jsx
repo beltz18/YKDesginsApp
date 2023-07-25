@@ -5,12 +5,34 @@ import {
   AiFillStar,
   AiOutlineStar
 } from 'react-icons/ai'
-import { Product }   from '../../components'
+import { Product }   from '@c/index'
 import axios         from 'axios'
-import { getCookie } from '@r/components/cookies'
+import { getCookie } from '@c/cookies'
+import { toast }     from 'react-hot-toast'
 
-const PoductDetails = ({ product: { image, name, price, details }, products }) => {
+const PoductDetails = ({ product: { image, name, price, details }, products, id, email }) => {
+  const notifySuccess     = (msg) => toast.success(msg)
+  const notifyError       = (msg) => toast.error(msg)
   const [index, setIndex] = useState(0)
+
+  const handleCart = async () => {
+    const body = {
+      email,
+      productId: parseInt(id),
+      quantity: 1,
+      price
+    }
+
+    const res = await fetch('http://127.0.0.1:5000/cart/add', {
+      method: 'POST',
+      mode: 'cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    }).then(res => res.json())
+
+    if (res.status) notifySuccess(res.message)
+    else notifyError(res.message)
+  }
 
   return (
     <div>
@@ -58,8 +80,8 @@ const PoductDetails = ({ product: { image, name, price, details }, products }) =
             </p>
           </div>
           <div className="buttons">
-            <button type='button' className='add-to-cart' onClick="">Agregar al carro</button>
-            <button type='button' className='buy-now' onClick="">Comprar</button>
+            <button type='button' className='add-to-cart' onClick={ handleCart }>Agregar al carro</button>
+            <button type='button' className='buy-now'>Comprar</button>
           </div>
         </div>
       </div>
@@ -85,6 +107,7 @@ export async function getServerSideProps ({ params: { id }, req }) {
   const products = await axios.get('http://127.0.0.1:5000/product/get/product/0')
 
   const token = getCookie('token', req)
+  const email = getCookie('email', req)
 
   if (typeof token == 'undefined') {
     return {
@@ -98,7 +121,9 @@ export async function getServerSideProps ({ params: { id }, req }) {
   return {
     props: {
       product: product.data,
-      products: products.data
+      products: products.data,
+      id: id,
+      email: email,
     }
   }
 }
