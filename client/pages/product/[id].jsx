@@ -24,7 +24,7 @@ const PoductDetails = ({ product: { image, name, price, details }, products }) =
               image.map((image, i) => (
                 <img
                   key={ i }
-                  src={`/assets/${ image }`}
+                  src={ image }
                   alt="Product image"
                   className={i === index ? 'small-image selected-image' : 'small-image'}
                   onMouseEnter={() => setIndex(i)}
