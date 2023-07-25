@@ -1,48 +1,17 @@
-import React         from 'react'
-import { toast }     from 'react-hot-toast'
-import { getCookie } from '@r/components/cookies'
+import React, { useState } from 'react'
+import { toast }           from 'react-hot-toast'
+import { getCookie }       from '@c/cookies'
 
 const ProductForm = () => {
-  const notifySuccess = (msg) => toast.success(msg)
-  const notifyError   = (msg) => toast.error(msg)
+  const [file, setFile] = useState(null)
+  const notifySuccess   = (msg) => toast.success(msg)
+  const notifyError     = (msg) => toast.error(msg)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const product = {
-      name:        e.target[0].value,
-      price:       e.target[1].value,
-      quantity:    e.target[2].value,
-      description: e.target[3].value,
-      category:    e.target[4].value,
-    }
+    if (!file) return
 
-    const form = e.currentTarget
-    const file = Array.from(form.elements).find(({ type }) => type === 'file')
-    
-    const formData = new FormData()
-    for (const dataFile of file.files) { formData.append('file', dataFile) }
-    formData.append('upload_preset', 'crazyShop_uploads')
-
-    const data = await fetch(`${process.env.NEXT_PUBLIC_CLOUDINARY}`, {
-      method: 'POST',
-      body: formData
-    }).then(res => res.json())
-    
-    product['img'] = data.secure_url
-    const body = { product }
-
-    const newPrd = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}${process.env.NEXT_PUBLIC_PRODUCT_REG}`, {
-      method: 'POST',
-      mode: 'cors',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(body)
-    }).then(res => res.json())
-    
-    if (newPrd.status == 201) { 
-      notifySuccess(newPrd.message)
-      e.target.reset()
-    } 
-    else notifyError(newPrd.message) 
+    const res = await fetch('/api/upload')
   }
 
   return (
@@ -79,7 +48,7 @@ const ProductForm = () => {
                   </select>
                 </div>
                 <div className="mb-6">
-                  <input className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" type="file"></input>
+                  <input className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" type="file" onClick={() => { setFile(e.target.files[0]) }}></input>
                 </div>
                 <div className="mb-6 flex justify-center items-center">
                   <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Registrar producto</button>
