@@ -39,6 +39,21 @@ def register_product():
     'message': 'Producto insertado correctamente',
     'status': True
   }
+
+@app.route('/product/data')
+def get_products():
+  product = conn.YKdb['product']
+  data    = []
+  dataPrd = product.find()
+
+  for d in dataPrd:
+    del d['_id']
+    data.append(d)
+
+  return {
+    'message': 'products fetched',
+    'data': data
+  }
   
 
 @app.route('/product/<action>/<Type>/<Id>', methods=['GET', 'POST'])

@@ -7,7 +7,7 @@ const Product = ({ product: { id, image, name, price, details } }) => {
     <div>
       <Link href={`/product/${ id }`}>
         <Image
-          src={`/assets/${ image[0] }`}
+          src={ image[0] }
           width='250'
           height='250'
           alt='product'
