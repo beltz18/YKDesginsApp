@@ -61,7 +61,7 @@ data = {
   'banners': [
     {
       'id': 1,
-      'image': 'banner.webp',
+      'image': 'imgd.webp',
       'smallText': 'todo lo que imagines',
       'largeText': 'DTF',
       'midText': 'sublimacion',
