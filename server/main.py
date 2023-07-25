@@ -6,7 +6,10 @@ from controllers.product  import Product
 from controllers.banner   import Banner
 from controllers.discount import Discount
 # Blueprints
-from routes.userRouter import userRouter
+from routes.userRouter    import userRouter
+from util.var             import *
+# MongoDB Connection
+import controllers.connection as conn
 
 app = Flask(__name__)
 CORS(app)
@@ -16,6 +19,17 @@ CORS(app)
 @app.route('/')
 def index():
   return {'message': 'hello world'}
+
+@app.route('/product/register', methods=['POST'])
+def register_product():
+  data    = request.get_json()
+  product = conn.YKdb['product']
+  product.insert_one(data)
+  return {
+    'message': 'Producto insertado correctamente',
+    'status': True
+  }
+  
 
 @app.route('/product/<action>/<Type>/<Id>', methods=['GET', 'POST'])
 def product(action, Type, Id):
