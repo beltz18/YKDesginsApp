@@ -2,59 +2,59 @@ data = {
   'products': [
     {
       'id': 1,
-      'name': 'In-ear wired',
-      'details': 'lorem ipsum',
+      'name': 'CAMISAS',
+      'details': 'REF MARIO',
       'price': 9.99,
-      'image': ['earphones_a_1.webp', 'earphones_a_2.webp', 'earphones_a_3.webp', 'earphones_a_4.webp']
+      'image': ['imagesma.webp', 'Camisetas-blancas-sublimacion.webp', 'marr.webp', 'playera-300x225.webp']
     },
     {
       'id': 2,
-      'name': 'In-ear wireless Bluetooth',
-      'details': 'lorem ipsum',
+      'name': 'SUETER',
+      'details': 'REF PAREJAS',
       'price': 15.25,
-      'image': ['earphones_b_1.webp', 'earphones_b_2.webp', 'earphones_b_3.webp', 'earphones_b_4.webp']
+      'image': ['dinn.webp', 'piiizz.webp', 'moor.webp', 'agua.webp']
     },
     {
       'id': 3,
-      'name': 'In-ear classic',
-      'details': 'lorem ipsum',
-      'price': 8.70,
-      'image': ['earphones_c_1.webp', 'earphones_c_2.webp', 'earphones_c_3.webp', 'earphones_c_4.webp']
+      'name': 'GORRAS',
+      'details': 'REF MALLA',
+      'price': 5.70,
+      'image': ['maal.webp', 'images.webp', 'sublble.webp', 'trucker_verde.webp']
     },
     {
       'id': 4,
-      'name': 'Headphones',
-      'details': 'lorem ipsum',
+      'name': 'GORRAS',
+      'details': 'REF PIÑA',
       'price': 8.70,
-      'image': ['headphones_a_1.webp', 'headphones_a_2.webp', 'headphones_a_3.webp', 'headphones_a_4.webp']
+      'image': ['gorra-piña-descripcion.webp', 'gorra-piña-blanca.webp', 'gorra-piña-amarilla.webp', 'gorra-piña-roja.webp']
     },
     {
       'id': 5,
-      'name': 'Headphones',
-      'details': 'lorem ipsum',
-      'price': 8.70,
-      'image': ['headphones_b_1.webp', 'headphones_b_2.webp', 'headphones_b_3.webp', 'headphones_b_4.webp']
+      'name': 'TAZAS',
+      'details': 'REF VARIAS',
+      'price': 3.70,
+      'image': ['muj.webp', 'pap.webp', 'tazajun.webp', 'avg.webp']
     },
     {
       'id': 6,
-      'name': 'Headphones',
-      'details': 'lorem ipsum',
-      'price': 8.70,
-      'image': ['headphones_c_1.webp', 'headphones_c_2.webp', 'headphones_c_3.webp', 'headphones_c_4.webp']
+      'name': 'LANYERS',
+      'details': 'REF VARIOS',
+      'price': 0.70,
+      'image': ['lanyas.webp', 'Lanyards2022-2.webp', 'lanyard-oferta.webp', 'lanyar_1.webp']
     },
     {
       'id': 7,
-      'name': 'Headphones',
-      'details': 'lorem ipsum',
-      'price': 8.70,
-      'image': ['speaker1.webp', 'speaker2.webp', 'speaker3.webp', 'speaker4.webp']
+      'name': 'CAMISA',
+      'details': 'REF PIZZAS',
+      'price': 9.70,
+      'image': ['earphones_a_11.webp', 'earphones_a_22.webp', 'earphones_a_33.webp', 'earphones_a_44.webp']
     },
     {
       'id': 8,
-      'name': 'Headphones',
-      'details': 'lorem ipsum',
-      'price': 8.70,
-      'image': ['watch_1.webp', 'watch_2.webp', 'watch_3.webp', 'watch_4.webp']
+      'name': 'TULAS',
+      'details': 'REF VARIOS',
+      'price': 5.70,
+      'image': ['aveng.webp', 'mon.webp', 'osos.webp', 'trab.webp']
     },
   ],
 
@@ -62,11 +62,11 @@ data = {
     {
       'id': 1,
       'image': 'banner.webp',
-      'smallText': 'Beats Solo Air',
-      'largeText': 'FINE',
-      'midText': 'Summer Sale',
-      'description': 'Best headphones on the market',
-      'buttonText': 'Shop Now'
+      'smallText': 'todo lo que imagines',
+      'largeText': 'DTF',
+      'midText': 'sublimacion',
+      'description': 'todo en impresiones en sublimacion y dtf',
+      'buttonText': 'AQUI'
     },
   ],
 
@@ -75,14 +75,14 @@ data = {
       'id': 1,
       'product': '8',
       'discount': 20,
-      'largeText1': 'MORE',
-      'largeText2': 'TEXT',
-      'saleTime': '15 May to 15 Sep',
-      'smallText': 'small',
-      'midText': 'Summer Sale',
-      'description': 'Lorem Ipsum',
-      'buttonText': 'Shop Now',
-      'image': 'watch_1.webp'
+      'largeText1': 'DESCUENTO',
+      'largeText2': 'EN TODO',
+      'saleTime': '15 Jun hasta 31 Jul',
+      'smallText': 'DESCUENTO',
+      'midText': 'EN TODO EL CATALOGO',
+      'description': 'SUBLIMADOS Y DTF',
+      'buttonText': 'AQUI',
+      'image': 'como-sublimar-tazas-1-e1574069564818.webp'
     }
   ]
 }
